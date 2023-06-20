@@ -15,6 +15,21 @@
   padding: 0;
 }
 
+.input-box{
+  display: block;
+  margin: 25px;
+  padding: 7px;
+  border:2px solid black;
+  border-radius: 5px;
+  width: 300px;
+}
+.register{
+  margin-left: 30%;
+}
+.register h1{
+  margin-left: 13%;
+}
+
 .footer{
   background-color: #333;
   color: #fff;
