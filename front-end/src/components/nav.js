@@ -19,7 +19,7 @@ const Nav = () => {
         <li><Link to="/profile">Profile</Link></li>
         {/* agar user sign in hai to logout ka option dega varna sign up ka  */}
         <li>{auth?<Link onClick={logout} to="/signup">Logout</Link>:<Link to="/signup">Signup</Link>}</li>
-        
+        <li><Link to={"/login"}>Login</Link></li>
     </ul>
   </div>;
 };

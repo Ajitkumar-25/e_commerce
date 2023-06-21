@@ -29,6 +29,13 @@
 .register h1{
   margin-left: 13%;
 }
+.login
+{
+  margin-left: 30%;
+}
+.login h1{
+  margin-left: 13%;
+}
 
 .footer{
   background-color: #333;
