@@ -37,6 +37,17 @@
   margin-left: 13%;
 }
 
+.nav-right{
+  text-align: right;
+}
+
+.logo{
+  width: 40px;
+  float: left;
+  border-radius:20%;
+  margin: 3px;
+
+}
 .footer{
   background-color: #333;
   color: #fff;
