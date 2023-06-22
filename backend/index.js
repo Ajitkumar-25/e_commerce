@@ -46,4 +46,11 @@ app.get("/list-products", async (req, resp) => {
   resp.send({result:"nothing found"})
 });
 
+//delete api 
+app.delete("/delete-product/:id", async (req, resp) => {
+  let result = await Product.deleteOne({ _id: req.params.id });
+  resp.send(result);
+});
+
+
 app.listen(5000);

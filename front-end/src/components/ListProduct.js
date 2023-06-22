@@ -15,7 +15,20 @@ const [products, setproducts] = useState([]);
     result = await result.json();
     setproducts(result);
   }
-console.warn(products);
+
+const handledeleteproducts=async(id)=>{
+    let result =await fetch(`http://localhost:5000/delete-product/${id}`,{
+      method:"DELETE"
+    });
+    result = await result.json();
+    if(result)
+    {
+      alert("product deleted successfully");
+      getProducts();
+    }
+    
+}
+
   return (
     <div className="product-list">
       <h1>list of products</h1>
@@ -25,15 +38,17 @@ console.warn(products);
         <li>price</li>
         <li>category</li>
         <li>company</li>
+        <li>operations</li>
       </ul>
       {
-      products.map((item) => (
-        <ul>
-          <li>{item._id}</li>
+      products.map((item,index) => (
+        <ul key={item._id}>
+          <li>{index+1}</li>
           <li>{item.name}</li>
           <li>{item.price}</li>
           <li>{item.category}</li>
           <li>{item.company}</li>
+          <li><button onClick={()=>handledeleteproducts(item._id)}>delete</button></li>
         </ul>
       ))}
       </div >
