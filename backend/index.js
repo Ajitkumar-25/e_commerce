@@ -30,11 +30,20 @@ app.post("/login", async (req, resp) => {
   }
 });
 
-//route for product
+//route for adding product
 app.post("/add-product", async (req, resp) => {
   let product = new Product(req.body);
   let result = await product.save();
   resp.send(result);
+});
+
+//route for listing all products
+app.get("/list-products", async (req, resp) => {
+  let products = await Product.find();
+  if(products.length>0)
+  resp.send(products);
+  else
+  resp.send({result:"nothing found"})
 });
 
 app.listen(5000);
