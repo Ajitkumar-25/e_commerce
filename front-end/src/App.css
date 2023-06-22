@@ -62,6 +62,24 @@
   display: block;
   margin-left: 25px;
 }
+
+.product-list{
+text-align: center;
+margin-top: 50px;
+}
+
+
+.product-list ul li{
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #333;
+  width: 200px;
+}
+.product-list ul{
+  margin: 0px;
+}
+
+
 .footer{
   background-color: #333;
   color: #fff;

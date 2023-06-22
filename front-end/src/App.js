@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp";
 import PrivateComponent from "./components/private_component";
 import Login from "./components/login";
 import Addproduct from "./components/addproduct";
+import ListProduct from "./components/ListProduct";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Nav />
         <Routes> 
           <Route element={<PrivateComponent/>}>
-          <Route path="/" element={<h1>This is product listing</h1>} />
+          <Route path="/" element={<ListProduct/>} />
           <Route path="/add" element={<Addproduct/>} />
           <Route path="/update" element={<h1>This is update product</h1>} />
           <Route path="/logout" element={<h1>This is logout</h1>} />
