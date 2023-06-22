@@ -54,7 +54,13 @@
   float: left;
   border-radius:20%;
   margin: 3px;
+}
 
+.invalid-input{
+  color: red;
+  margin-top: -20px;
+  display: block;
+  margin-left: 25px;
 }
 .footer{
   background-color: #333;
