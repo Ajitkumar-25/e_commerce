@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import {Link} from 'react-router-dom'
 
 const ListProduct = () => {
 const [products, setproducts] = useState([]);
@@ -48,7 +48,8 @@ const handledeleteproducts=async(id)=>{
           <li>{item.price}</li>
           <li>{item.category}</li>
           <li>{item.company}</li>
-          <li><button onClick={()=>handledeleteproducts(item._id)}>delete</button></li>
+          <li><button onClick={()=>handledeleteproducts(item._id)}>delete</button>
+          <Link to={`update/${item._id}`} >Update</Link></li>
         </ul>
       ))}
       </div >
