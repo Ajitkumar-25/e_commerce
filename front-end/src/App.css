@@ -79,7 +79,15 @@ margin-top: 50px;
   margin: 0px;
 
 }
+.search-box{
+ width: 400px;
+ margin: 20px;
+ height: 30px;
+ border: 2px solid black;
+ padding: 10px;
+ border-radius: 5px;
 
+}
 
 .footer{
   background-color: #333;

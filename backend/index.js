@@ -40,34 +40,46 @@ app.post("/add-product", async (req, resp) => {
 //route for listing all products
 app.get("/list-products", async (req, resp) => {
   let products = await Product.find();
-  if(products.length>0)
-  resp.send(products);
-  else
-  resp.send({result:"nothing found"})
+  if (products.length > 0) resp.send(products);
+  else resp.send({ result: "nothing found" });
 });
 
-//delete api 
+//delete api
 app.delete("/delete-product/:id", async (req, resp) => {
   let result = await Product.deleteOne({ _id: req.params.id });
   resp.send(result);
 });
 
-
 //prefill form api
 app.get("/product/:id", async (req, resp) => {
-    let result= await Product.findOne({_id:req.params.id})
-    if(result){
+  let result = await Product.findOne({ _id: req.params.id });
+  if (result) {
     resp.send(result);
-    }
-    else
-    resp.send({result:"No record found"})
-  }
-  
-);
+  } else resp.send({ result: "No record found" });
+});
 
 // update api
 app.put("/product/:id", async (req, resp) => {
-  let result = await Product.updateOne({ _id: req.params.id }, {$set: req.body});
+  let result = await Product.updateOne(
+    { _id: req.params.id },
+    { $set: req.body }
+  );
   resp.send(result);
-})
+});
+
+// search api
+app.get("/search/:key", async (req, resp) => {
+  let result = await Product.find({
+    "$or": [
+      { name: { $regex: req.params.key } },
+      { company: { $regex: req.params.key } },
+      { category: { $regex: req.params.key } },
+      { price: { $regex: req.params.key } },
+      
+    ],
+  });
+  resp.send(result);
+});
+
+
 app.listen(5000);
