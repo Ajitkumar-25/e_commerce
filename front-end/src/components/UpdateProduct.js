@@ -1,32 +1,40 @@
 import React, { useEffect } from "react";
-import {useParams} from 'react-router-dom'
+import { useParams,useNavigate } from "react-router-dom";
 import { useState } from "react";
 const UpdateProduct = () => {
   const [name, setname] = useState("");
   const [price, setprice] = useState("");
   const [category, setcategory] = useState("");
   const [company, setcompany] = useState("");
-    const params = useParams();
+  const params = useParams();
+  const navigate=useNavigate();
 
+  useEffect(() => {
+    getproductdetail();
+  }, []);
 
-    useEffect(() => {
-        getproductdetail();
-      }, []);
-    
+  const getproductdetail = async () => {
+    let result = await fetch(`http://localhost:5000/product/${params.id}`);
+    result = await result.json();
+    // console.log(result);
+    setname(result.name);
+    setprice(result.price);
+    setcategory(result.category);
+    setcompany(result.company);
+  };
 
-    const getproductdetail=async()=>{
-        let result = await fetch(`http://localhost:5000/product/${params.id}`);
-         result = await result.json();
-            console.log(result);
-            setname(result.name);
-            setprice(result.price);
-            setcategory(result.category);
-            setcompany(result.company);
-    }
-
-  const updateproduct = () => {
+  const updateproduct = async () => {
     console.log(name, price, category, company);
-
+    let result = await fetch(`http://localhost:5000/product/${params.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, price, category, company }),
+    });
+    result = await result.json();
+    console.warn(result);
+    navigate('/');
   };
 
   return (
