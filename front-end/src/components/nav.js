@@ -9,7 +9,6 @@ const Nav = () => {
     localStorage.clear();
     navigate("/");
   };
-
   return (
     <div>
       <img
